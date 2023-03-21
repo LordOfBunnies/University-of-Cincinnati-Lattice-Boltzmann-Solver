@@ -1,0 +1,40 @@
+UCBLS is currently in version 0.08, something of an alpha release.  Much work needs to be done to make this a truly viable solver, and this will be detailed below.
+
+
+
+SIMPLE UPDATES
+-Remove commented out code and clean up files.  As this was taken straight from my dissertation work, the code is not terrible clean.
+-Update some constants or make more universal.  The biggest priority was getting it working, so some constants have been commented out or been bodged in to make it work.  These can be updated in order to make the code more universal.
+-Replace the NAMELIST system with the ParmParse system since it uses Amrex anyway.
+-Update refinement method to account for null nodes as well.
+-Correct outflow boundary condition.
+
+
+
+
+MODERATE UPDATES
+-Allow for all flow types in all directions.  Currently, supersonic flow can only occur in the positive x-direction.
+-Improve startup procedures.  The startup procedures are somewhat rough currently.
+-Add low speed lattice.  Currently, only a D3Q39 lattice is available.  This may belong in the long term updates however as many parts need updating for it.
+-Improve the shifted lattice system since it can be confusing or difficult to deal with.
+-Hard code some shifted lattice information to improve speed (there's a LOT of multiplying by 0 without it).
+-Improve state matrix information holding.
+-Improve damping.
+-Update microphone system.
+-Add restart support.
+
+
+
+
+LONG TERM UPDATES
+-Move to a shared memory system.  The current RAM usage with Amrex is somewhat egregious because of the required directions for ELBM.  This may require gutting Amrex to achieve.
+-Use CGNS for all output.  It was originally all CGNS, but the AMR grids caused problems with it, and Plot3D output was used to get results out.
+-Implement rotating flow/turbomachinery mechanics to allow more aerospace flows.
+-Implement morphing geometry possibilities.
+-Implement machine learning to shorten Jacobian solution time.
+-Implement acoustics solutions.
+-Allow inheritance of nodal properties during regrid phase.
+-Add GPU capability.
+
+
+
